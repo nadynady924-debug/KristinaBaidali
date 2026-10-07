@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кристина Байдали — Группа компаний Потапыч</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111111;
+    --ink-deep:#000000;
+    --paper:#F0EDE8;
+    --paper-dim:#8A8580;
+    --accent:#FFFFFF;
+    --hairline:rgba(240,237,232,0.12);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+    padding-bottom:env(safe-area-inset-bottom);
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 clamp(20px, 5vw, 64px);
+  }
+
+  /* --- Mark --- */
+  .mark{
+    padding-top:clamp(24px,4vw,40px);
+    padding-bottom:clamp(24px,4vw,40px);
+    font-family:'Fraunces', serif;
+    font-size:1rem;
+    letter-spacing:0.02em;
+    color:var(--paper-dim);
+  }
+  .mark span{ color:var(--paper); }
+
+  /* --- Hero --- */
+  .hero{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    align-items:stretch;
+    gap:0;
+    min-height:calc(100vh - 90px);
+    min-height:calc(100dvh - 90px);
+  }
+
+  .hero-copy{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:clamp(12px,4vw,0px) clamp(20px,5vw,64px) clamp(48px,6vw,0px);
+    max-width:640px;
+  }
+
+  .hero-copy .lede{
+    font-size:clamp(1rem,1.3vw,1.15rem);
+    color:var(--paper-dim);
+    max-width:32ch;
+    margin-bottom:clamp(20px,3vw,28px);
+    letter-spacing:0.01em;
+  }
+
+  .hero-copy h1{
+    font-family:'Fraunces', serif;
+    font-weight:560;
+    font-size:clamp(2.6rem,5.6vw,4.4rem);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    color:var(--paper);
+    max-width:14ch;
+  }
+
+  .hero-copy h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--accent);
+  }
+
+  .hero-rule{
+    width:64px;
+    height:1px;
+    background:var(--paper-dim);
+    margin:clamp(24px,3vw,32px) 0;
+    border:none;
+  }
+
+  .hero-role{
+    font-size:0.95rem;
+    color:var(--paper-dim);
+    line-height:1.7;
+    max-width:36ch;
+  }
+
+  .hero-photo{
+    position:relative;
+    min-height:52vh;
+    min-height:52dvh;
+    background:var(--ink-deep);
+  }
+  .hero-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:50% 18%;
+    display:block;
+    filter:grayscale(1) contrast(1.08) brightness(0.92);
+  }
+  .hero-photo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(17,17,17,0) 60%, rgba(17,17,17,0.5) 100%);
+    pointer-events:none;
+  }
+  .hero-photo::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:1px;
+    background:var(--hairline);
+    z-index:2;
+  }
+
+  /* --- Divider --- */
+  .divider{
+    border:none;
+    border-top:1px solid var(--hairline);
+  }
+
+  /* --- Section head --- */
+  .section{
+    padding:clamp(56px,8vw,96px) 0 clamp(64px,9vw,110px);
+  }
+
+  .section-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(32px,6vw,80px);
+    align-items:end;
+    margin-bottom:clamp(40px,6vw,64px);
+  }
+
+  .section-head h2{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:clamp(1.9rem,3.4vw,2.6rem);
+    color:var(--paper);
+    max-width:18ch;
+  }
+
+  .section-head p{
+    color:var(--paper-dim);
+    font-size:1rem;
+    max-width:38ch;
+    line-height:1.7;
+  }
+
+  /* --- Contact grid --- */
+  .contacts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+
+  .contact-card{
+    background:var(--ink);
+    padding:clamp(28px,4vw,40px) clamp(24px,4vw,40px);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:28px;
+    text-decoration:none;
+    transition:background 0.2s ease;
+    cursor:pointer;
+  }
+  .contact-card:hover, .contact-card:active{ background:var(--ink-deep); }
+
+  .contact-card .label{
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+  }
+
+  .contact-card .value{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    font-size:clamp(1.3rem,2.2vw,1.8rem);
+    color:var(--paper);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    letter-spacing:-0.01em;
+  }
+
+  .arrow{
+    width:26px; height:26px;
+    border-radius:50%;
+    border:1px solid var(--paper-dim);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    transition:transform 0.2s ease, border-color 0.2s;
+  }
+  .arrow svg{ width:11px; height:11px; display:block; }
+  .contact-card:hover .arrow{ transform:translate(3px,-3px); border-color:var(--paper); }
+
+  /* --- Projects --- */
+  .projects{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+
+  .project-block{
+    background:var(--ink);
+    padding:clamp(28px,4vw,44px) clamp(24px,4vw,40px);
+  }
+
+  .project-block h3{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(1.2rem,2vw,1.5rem);
+    color:var(--paper);
+    margin-bottom:10px;
+    line-height:1.2;
+  }
+
+  .project-block p{
+    font-size:0.9rem;
+    color:var(--paper-dim);
+    line-height:1.65;
+    margin-bottom:22px;
+  }
+
+  .links-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+
+  .link-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:5px 13px;
+    border:1px solid var(--hairline);
+    font-size:0.78rem;
+    letter-spacing:0.04em;
+    color:var(--paper-dim);
+    text-decoration:none;
+    transition:border-color 0.2s, color 0.2s;
+  }
+  .link-pill:hover{
+    border-color:var(--paper-dim);
+    color:var(--paper);
+  }
+
+  /* --- Personal contacts --- */
+  .personal-contacts{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:1px;
+    background:var(--hairline);
+    border:1px solid var(--hairline);
+  }
+
+  /* --- Footer --- */
+  footer{
+    border-top:1px solid var(--hairline);
+    padding:28px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:var(--paper-dim);
+    font-size:0.82rem;
+  }
+
+  .footer-note{
+    max-width:480px;
+    text-align:right;
+    line-height:1.6;
+  }
+
+  /* --- Responsive --- */
+  @media(max-width:860px){
+    .hero{ grid-template-columns:1fr; min-height:auto; }
+    .hero-photo{ order:-1; min-height:64vh; min-height:64dvh; }
+    .hero-photo::before{ display:none; }
+    .hero-copy{ padding:clamp(32px,8vw,48px) 20px 8px; max-width:none; }
+    .section-head{ grid-template-columns:1fr; gap:16px; }
+    .contacts, .projects{ grid-template-columns:1fr; }
+    .personal-contacts{ grid-template-columns:1fr; }
+    footer{ flex-direction:column; gap:10px; align-items:flex-start; }
+    .footer-note{ text-align:left; }
+  }
+
+  @media(max-width:560px){
+    .wrap{ padding:0 18px; }
+    .mark{ padding-top:20px; padding-bottom:20px; font-size:0.92rem; }
+    .hero-photo{ min-height:58vh; aspect-ratio:4/5; }
+    .hero-photo img{ object-position:50% 14%; }
+    .hero-copy{ padding:28px 18px 4px; }
+    .hero-copy h1{ font-size:2.15rem; }
+    .hero-rule{ margin:20px 0; width:48px; }
+    .contact-card{ padding:22px 18px; gap:16px; }
+    .contact-card .value{ font-size:1.2rem; }
+    .project-block{ padding:24px 18px; }
+    footer{ padding:20px 0; font-size:0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MARK -->
+<div class="wrap">
+  <div class="mark">Группа компаний <span>Потапыч</span></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-copy">
+    <p class="lede">Серийный предприниматель из Томска. 12 лет в бизнесе.</p>
+    <h1>Кристина <em>Байдали</em></h1>
+    <hr class="hero-rule">
+    <p class="hero-role">
+      Основатель Группы компаний «Потапыч»<br>
+      Председатель комитета по развитию<br>
+      женского предпринимательства<br>
+      ТПП Томской области
+    </p>
+  </div>
+  <div class="hero-photo">
+    <img src="photo.jpg" alt="Кристина Байдали">
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROJECTS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Проекты и направления</h2>
+      <p>Группа компаний объединяет несколько направлений — от производства до аренды и экскурсий.</p>
+    </div>
+
+    <div class="projects">
+
+      <div class="project-block">
+        <h3>Фабрика ростовых кукол «Потапыч»</h3>
+        <p>Производство полноразмерных ростовых кукол для брендов, мероприятий и ТВ. Топ-5 в России, клиенты в 40 странах, представительства в Сербии и Турции.</p>
+        <div class="links-row">
+          <a href="https://potaph.com" target="_blank" class="link-pill">Сайт</a>
+          <a href="https://www.instagram.com/potaph_proizvodstvo/?hl=ru" target="_blank" class="link-pill">Instagram*</a>
+          <a href="https://vk.ru/potaph_proizvodstvo" target="_blank" class="link-pill">ВКонтакте</a>
+          <a href="https://max.ru/potaph_proizvodstvo" target="_blank" class="link-pill">Мах</a>
+          <a href="https://t.me/potaphfabrika" target="_blank" class="link-pill">Telegram</a>
+        </div>
+      </div>
+
+      <div class="project-block">
+        <h3>Экскурсия на фабрику</h3>
+        <p>Живые экскурсии на производство ростовых кукол — для детей, корпоративных групп и туристов.</p>
+        <div class="links-row">
+          <a href="https://potapych-company.ru/tour/" target="_blank" class="link-pill">Сайт</a>
+          <a href="https://vk.ru/potaphshow" target="_blank" class="link-pill">ВКонтакте</a>
+          <a href="https://www.instagram.com/potaph_kykla/?hl=ru" target="_blank" class="link-pill">Instagram*</a>
+        </div>
+      </div>
+
+      <div class="project-block">
+        <h3>Аренда ростовых кукол в Томске</h3>
+        <p>Ростовые персонажи для праздников, корпоративов, открытий и городских событий в Томске и регионе.</p>
+        <div class="links-row">
+          <a href="https://vk.ru/potaphshow" target="_blank" class="link-pill">ВКонтакте</a>
+          <a href="https://www.instagram.com/potaph_kykla/?hl=ru" target="_blank" class="link-pill">Instagram*</a>
+        </div>
+      </div>
+
+      <div class="project-block">
+        <h3>Руки Обнимуки</h3>
+        <p>Проект о силе объятий и человеческого контакта. Уникальный бренд в экосистеме ГК «Потапыч».</p>
+        <div class="links-row">
+          <a href="https://ruki-obnimuki.ru" target="_blank" class="link-pill">Сайт</a>
+          <a href="https://vk.ru/rukiobnimuki" target="_blank" class="link-pill">ВКонтакте</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PERSONAL CONTACTS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Написать Кристине</h2>
+      <p>Открыта к диалогу — о партнёрстве, консультациях и развитии женского предпринимательства.</p>
+    </div>
+
+    <div class="personal-contacts">
+      <a class="contact-card" href="https://t.me/s/baidalikristina" target="_blank">
+        <span class="label">Telegram</span>
+        <span class="value">
+          @baidalikristina
+          <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H3.5M10 2V8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </a>
+      <a class="contact-card" href="https://www.instagram.com/baidali_official" target="_blank">
+        <span class="label">Instagram*</span>
+        <span class="value">
+          @baidali_official
+          <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H3.5M10 2V8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </a>
+      <a class="contact-card" href="https://vk.ru/baidalikris" target="_blank">
+        <span class="label">ВКонтакте</span>
+        <span class="value">
+          baidalikris
+          <span class="arrow"><svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H3.5M10 2V8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:16px;">
+    <span>Кристина Байдали</span>
+    <span class="footer-note">* Instagram — социальная сеть признана нежелательной организацией на территории Российской Федерации</span>
+  </div>
+</footer>
+
+</body>
+</html>
